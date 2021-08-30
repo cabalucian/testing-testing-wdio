@@ -1,5 +1,5 @@
 describe('Verify results match the search criteria', () => {
-    it('should do all the tasks', async () => {
+    it('should click on the purpose dropdown element', async () => {
         //Go to url
         await browser.url('https://www.bayut.com');
 
@@ -11,6 +11,9 @@ describe('Verify results match the search criteria', () => {
         const button = await $(result);
         await button.click();
 
+    });
+
+    it('should click on the Buy option', async () => {
         //Return Buy button and click on it
         const resultButtonBuy = await browser.execute(() => {
             return document.getElementsByClassName('_933a9a61 _5dd5033c') [0];
@@ -19,6 +22,9 @@ describe('Verify results match the search criteria', () => {
         const buttonBuy = await $(resultButtonBuy);
         await buttonBuy.click();
 
+    });
+
+    it('should choose the location to be Dubai Marina', async () => {
         //Choose Location to be Dubai Marina
         const resultLocationInput = await browser.execute(() => {
             return document.getElementsByClassName('a41c4dcc _6a3a3de9') [0];
@@ -26,6 +32,9 @@ describe('Verify results match the search criteria', () => {
         const locationName = await $(resultLocationInput);
         await locationName.setValue('Dubai Marina');
 
+    });
+
+    it('should click on the Dubai Marina search result', async () => {
         //Click on Dubai Marina search result
         await browser.pause(500);
         const resultButtonDubaiMarina = await browser.execute(() => {
@@ -34,23 +43,32 @@ describe('Verify results match the search criteria', () => {
         const buttonDubaiMarina = await $(resultButtonDubaiMarina);
         await buttonDubaiMarina.click();
 
+    });
+
+    it('should click on the Find button', async () => {
         //Click on the Find green button
         const buttonFindMe = await $('=Find');
         await buttonFindMe.click();
 
+    });
+
+    it('should wait for the list with locations to load', async () => {
+        //Wait for the list to load
+        const elem = await $('._357a9937');
+        await elem.waitForDisplayed({
+            timeout: 2000,
+            timeoutMsg: 'Page not loaded in 2s'
+        });
+    });
+
+    it('should verify the results match the search criteria', async () => {
         //Verify results match the search criteria
-        await browser.pause(1000);
+        //await browser.pause(1000);
         const resultArrayLocation = await browser.execute(() => {
             return document.getElementsByClassName('_7afabd84');
         })
         for (let i = 0; i < resultArrayLocation.length; i++) {
             await expect($(resultArrayLocation[i])).toHaveTextContaining('Dubai Marina');
         }
-
-        
-        //await browser.debug();
-
-        //console.log('Rezultatul este: ' + result.value);
-
     });
 });
