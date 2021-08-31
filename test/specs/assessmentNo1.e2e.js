@@ -25,9 +25,12 @@ describe('Verify results match the search criteria', () => {
         const resultButtonBuy = await browser.execute(() => {
             return document.getElementsByClassName('_933a9a61 _5dd5033c') [0];
         })
-
         const buttonBuy = await $(resultButtonBuy);
         await buttonBuy.click();
+
+        //Expect text to be "Buy"
+        const purposeText = await $('.fontCompensation');
+        await expect(purposeText).toHaveTextContaining('Buy');
 
     });
 
