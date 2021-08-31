@@ -57,6 +57,12 @@ describe('Verify results match the search criteria', () => {
         const buttonDubaiMarina = await $(resultButtonDubaiMarina);
         await buttonDubaiMarina.click();
 
+        //Expect Filter label to be "Dubai Marina"
+        const filterLabel = await browser.execute(() => {
+            return document.getElementsByClassName('_0ab46ba6') [0];
+        })
+        await expect($(filterLabel)).toHaveTextContaining('Dubai Marina');
+
     });
 
     it('should click on the Find button', async () => {
