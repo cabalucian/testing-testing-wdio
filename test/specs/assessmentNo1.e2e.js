@@ -50,7 +50,7 @@ describe('Verify results match the search criteria', () => {
 
     it('should click on the Dubai Marina search result', async () => {
         //Click on Dubai Marina search result
-        await browser.pause(500);
+        await browser.pause(700);
         const resultButtonDubaiMarina = await browser.execute(() => {
             return document.getElementsByClassName('_0e756b14') [0];
         })
