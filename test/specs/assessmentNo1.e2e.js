@@ -70,6 +70,9 @@ describe('Verify results match the search criteria', () => {
         const buttonFindMe = await $('=Find');
         await buttonFindMe.click();
 
+        //Expect url to change
+        await expect(browser).toHaveUrl('https://www.bayut.com/for-sale/property/dubai/dubai-marina/');
+
     });
 
     it('should wait for the list with locations to load', async () => {
