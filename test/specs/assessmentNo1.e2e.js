@@ -11,6 +11,13 @@ describe('Verify results match the search criteria', () => {
         const button = await $(result);
         await button.click();
 
+        //Expect the dropdown element to be visible
+        await browser.pause(100);
+        const dropdown = await browser.execute(() => {
+            return document.getElementsByClassName('_0a772a68') [0];
+        })
+        const dd = await $(dropdown);
+        await expect(dd).toBeDisplayed();
     });
 
     it('should click on the Buy option', async () => {
