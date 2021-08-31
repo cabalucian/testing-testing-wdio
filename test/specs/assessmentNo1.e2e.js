@@ -82,6 +82,9 @@ describe('Verify results match the search criteria', () => {
             timeout: 2000,
             timeoutMsg: 'Page not loaded in 2s'
         });
+
+        //Expect the list with locations to be displayed
+        await expect(elem).toBeDisplayed();
     });
 
     it('should verify the results match the search criteria', async () => {
