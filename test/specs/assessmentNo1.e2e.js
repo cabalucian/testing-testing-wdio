@@ -42,6 +42,10 @@ describe('Verify results match the search criteria', () => {
         const locationName = await $(resultLocationInput);
         await locationName.setValue('Dubai Marina');
 
+        //Expect text to be "Dubai Marina"
+        await browser.pause(100);
+        await expect(locationName).toHaveValue('Dubai Marina');
+
     });
 
     it('should click on the Dubai Marina search result', async () => {
